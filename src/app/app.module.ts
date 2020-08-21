@@ -9,13 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './view/home/home.component';
 import { SearchComponent } from './view/search/search.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { RepositoryComponent } from './components/repository/repository.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    RepositoryComponent
   ],
   imports: [
     BrowserModule,
