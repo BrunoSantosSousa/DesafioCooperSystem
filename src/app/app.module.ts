@@ -7,13 +7,13 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './view/home/home.component';
-import { ResultComponent } from './view/result/result.component';
+import { SearchComponent } from './view/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ResultComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
