@@ -23,8 +23,6 @@ export class UserEffects {
 
     constructor(
         private actions$ : Actions, 
-        private router : Router)
-    {
-
-    }
+        private router : Router
+    ) {}
 }
