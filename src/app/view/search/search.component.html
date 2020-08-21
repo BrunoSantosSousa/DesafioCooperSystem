@@ -1,68 +1,12 @@
 <div fxLayout="column">
-
-    <app-toolbar [user]="user"></app-toolbar>
+    <app-toolbar [user]="(user$ | async).name" (redirectHome)="onRedirectHome()"></app-toolbar>
 
     <mat-card class="card-container">
         <mat-card-header>
             <mat-card-title>Resultados</mat-card-title>
         </mat-card-header>
         <mat-card-content fxLayout="row wrap">
-            <app-repository fxFlex="25" fxFlex.xs="100"
-                name="Desafio CooperSystem"
-                full-name="BrunoSantosSousa/DesafioCooperSystem"
-                is-fork=false
-                html-url="emptyfortest"
-                stargazers=0
-                watchers=0
-                forks=0
-                created-at="somedatehere"
-                updated-at="anotherdatehere">
-            </app-repository>
-            <app-repository fxFlex="25"
-                name="Desafio CooperSystem"
-                full-name="BrunoSantosSousa/DesafioCooperSystem"
-                is-fork=false
-                html-url="emptyfortest"
-                stargazers=0
-                watchers=0
-                forks=0
-                created-at="somedatehere"
-                updated-at="anotherdatehere">
-            </app-repository>
-            <app-repository fxFlex="25"
-                name="Desafio CooperSystem"
-                full-name="BrunoSantosSousa/DesafioCooperSystem"
-                is-fork=false
-                html-url="emptyfortest"
-                stargazers=0
-                watchers=0
-                forks=0
-                created-at="somedatehere"
-                updated-at="anotherdatehere">
-            </app-repository>
-            <app-repository fxFlex="25"
-                name="Desafio CooperSystem"
-                full-name="BrunoSantosSousa/DesafioCooperSystem"
-                is-fork=false
-                html-url="emptyfortest"
-                stargazers=0
-                watchers=0
-                forks=0
-                created-at="somedatehere"
-                updated-at="anotherdatehere">
-            </app-repository>
-            <app-repository fxFlex="25"
-                name="Desafio CooperSystem"
-                full-name="BrunoSantosSousa/DesafioCooperSystem"
-                is-fork=false
-                html-url="emptyfortest"
-                stargazers=0
-                watchers=0
-                forks=0
-                created-at="somedatehere"
-                updated-at="anotherdatehere">
-            </app-repository>
-            <app-repository fxFlex="25"
+            <app-repository fxFlex="25" fxFlex.md="50" fxFlex.xs="100"
                 name="Desafio CooperSystem"
                 full-name="BrunoSantosSousa/DesafioCooperSystem"
                 is-fork=false

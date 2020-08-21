@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'app-search',
@@ -7,14 +8,18 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  public user : string = ''
+  public user$ = this.store.pipe(select(fromStore.getUserState))
   
-  constructor(private route: ActivatedRoute) { }
+
+  constructor(private store: Store<fromStore.State>) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.user = params['user'];
-    })
+    
+
+  }
+
+  onRedirectHome() {
+    this.store.dispatch(fromStore.UserActions.redirect());
   }
 
 }

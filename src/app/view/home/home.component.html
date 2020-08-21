@@ -6,11 +6,15 @@
 
     <mat-form-field id="user_form_field" appearance="outline">
         <mat-label>Usuário GitHub</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="userName">
     </mat-form-field>
 
     <div>
-        <button mat-raised-button color="primary">Pesquisar Repositórios</button>
+        <button mat-raised-button 
+                color="primary" 
+                (click)="onSubmit('google')">
+                Pesquisar Repositórios
+        </button>
     </div>
     
 </div>
