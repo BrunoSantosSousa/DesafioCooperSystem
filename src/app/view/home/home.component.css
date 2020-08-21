@@ -1,0 +1,7 @@
+.container {
+    height: 100%;
+}
+
+#user_form_field {
+    min-width: 300px
+}
