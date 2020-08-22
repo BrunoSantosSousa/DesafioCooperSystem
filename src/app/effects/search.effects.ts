@@ -1,30 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { tap, map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
+import { tap, map, filter, catchError, exhaustMap, switchMap } from 'rxjs/operators';
 import { SearchService } from '../services/search.service'
 import { ParseLinkService } from '../services/parse-link.service';
 import { UserActions, SearchActions } from '../store'
 import { Repository } from '../models/repository.model';
 
+
 @Injectable()
 export class SearchEffects {
 
     @Effect()
-    searchRepositories = this.actions$.pipe(
-        ofType(UserActions.setUserName.type),
-        map((action: any) => action.name),
-        exhaustMap((name: string) => this.searchService.fetch(name).pipe(
-            map((data: any) => {
-                console.log(data);
-                console.log(data.headers.get('Link'));
-                const links = this.parseLinkService.parseLinkHeader(data.headers.get('Link'));
-                console.log(links);
-                return data.body;
-            }),
-            map((repositories : Repository[]) => SearchActions.setRepositories({repositories}))
-        ))
+    searchRepositories$ = this.actions$.pipe(
+        ofType(SearchActions.LOAD_REPOSITORIES),
+        map((action : any) => action.name),
+        filter((name: string) => name.length !== 0),
+        exhaustMap((name: string) => {
+            return this.searchService.fetch(name).pipe(
+                switchMap((data: any) => {
+                    const paginations = this.parseLinkService.parseLinkHeader(data.headers.get('Link'));
+                    const repositories : Repository[] = data.body;
+                    return [
+                        SearchActions.setPaginations({paginations}),
+                        SearchActions.setRepositories({repositories})
+                    ];
+                }),
+                catchError(err => {
+                    console.log(err)
+                    return of()
+                })
+            )
+        })
     );
+
+    @Effect()
+    redirectToHome$ = this.actions$.pipe(
+        ofType(SearchActions.LOAD_REPOSITORIES),
+        filter((action : any) => action.name.length === 0),
+        map(() => UserActions.redirect())        
+    )
 
     constructor(
         private actions$ : Actions,

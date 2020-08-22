@@ -1,23 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as fromStore from '../../store';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   public user$ = this.store.pipe(select(fromStore.getUser))
   public repositories$ = this.store.pipe(select(fromStore.getRepositories))
+  private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<fromStore.State>) { }
+  constructor(
+    private store: Store<fromStore.State>,
+  ) { }
 
   ngOnInit(): void {
-    
+    this.subscription.add(this.user$.subscribe((user) => {
+      this.store.dispatch(fromStore.SearchActions.loadRepositories({
+        name: user.name
+      }));
+    }))
+  }
+
+  ngOnDestroy() : void {
+    this.subscription.unsubscribe();
   }
 
   onRedirectHome() {
+    this.subscription.unsubscribe();
     this.store.dispatch(fromStore.UserActions.redirect());
   }
 
