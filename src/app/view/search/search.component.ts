@@ -8,14 +8,13 @@ import * as fromStore from '../../store';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  public user$ = this.store.pipe(select(fromStore.getUserState))
-  
+  public user$ = this.store.pipe(select(fromStore.getUser))
+  public repositories$ = this.store.pipe(select(fromStore.getRepositories))
 
   constructor(private store: Store<fromStore.State>) { }
 
   ngOnInit(): void {
     
-
   }
 
   onRedirectHome() {
