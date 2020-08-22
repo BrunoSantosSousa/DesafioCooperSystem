@@ -6,6 +6,7 @@ import { SearchService } from '../services/search.service'
 import { ParseLinkService } from '../services/parse-link.service';
 import { UserActions, SearchActions } from '../store'
 import { Repository } from '../models/repository.model';
+import { Page } from '../models/page.model';
 
 
 @Injectable()
@@ -19,10 +20,10 @@ export class SearchEffects {
         exhaustMap((name: string) => {
             return this.searchService.fetch(name).pipe(
                 switchMap((data: any) => {
-                    const paginations = this.parseLinkService.parseLinkHeader(data.headers.get('Link'));
+                    const pages : Page[] = this.parseLinkService.parseLinkHeader(data.headers.get('Link'));
                     const repositories : Repository[] = data.body;
                     return [
-                        SearchActions.setPaginations({paginations}),
+                        SearchActions.setPages({pages}),
                         SearchActions.setRepositories({repositories})
                     ];
                 }),

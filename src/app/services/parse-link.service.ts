@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pagination } from '../models/pagination.model';
+import { Page } from '../models/page.model';
 import { PaginationService } from './pagination.service';
 
 @Injectable({
@@ -9,11 +9,11 @@ export class ParseLinkService {
 
   constructor(private paginationService : PaginationService) { }
 
-  parseLinkHeader(header: string) : Pagination[] {
+  parseLinkHeader(header: string) : Page[] {
     if (header.length === 0) return;
 
     const rels = header.split(',');
-    let links : Pagination[] = [];
+    let links : Page[] = [];
 
     for(let rel of rels) {
       var relSplit = rel.split(';');

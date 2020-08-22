@@ -1,12 +1,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { SearchActions } from '../actions';
 import { Repository } from '../../models/repository.model';
-import { Pagination } from '../../models/pagination.model';
+import { Page } from '../../models/page.model';
 import { Error } from '../../models/error.model';
 
 export interface SearchState {
     repositories: Repository[];
-    paginations: Pagination[];
+    paginations: Page[];
     error: Error,
     hasError: boolean
 }
@@ -25,7 +25,7 @@ const searchReducer = createReducer(
     initialState,
     on(SearchActions.loadRepositories, (() => initialState)),
     on(SearchActions.setRepositories, (state, { repositories }) => ({...state, repositories})),
-    on(SearchActions.setPaginations, (state, { paginations }) => ({ ...state, paginations })),
+    on(SearchActions.setPages, (state, { pages }) => ({ ...state, pages })),
     on(SearchActions.setError, (state, { error }) => ({...state, hasError: true, error: error}))
 )
 

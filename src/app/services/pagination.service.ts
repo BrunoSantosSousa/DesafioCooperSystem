@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pagination, PaginationType } from '../models/pagination.model';
+import { Page, PageType } from '../models/page.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +8,16 @@ export class PaginationService {
 
   constructor() { }
   
-  getPaginationType(type: string) : PaginationType {
+  getPaginationType(type: string) : PageType {
     switch(type) {
       case 'next':
-        return PaginationType.NEXT;
+        return PageType.NEXT;
       case 'last':
-        return PaginationType.LAST;
+        return PageType.LAST;
       case 'first':
-        return PaginationType.FIRST;
+        return PageType.FIRST;
       case 'prev':
-        return PaginationType.PREV;
+        return PageType.PREV;
       default:
         return;
     }
