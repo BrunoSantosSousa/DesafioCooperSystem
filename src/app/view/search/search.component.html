@@ -6,7 +6,11 @@
             <mat-card-title>Resultados</mat-card-title>
         </mat-card-header>
         <mat-card-content fxLayout="row wrap">
-            <app-repository *ngFor="let repository of repositories$ | async; index as i" fxFlex="25" fxFlex.md="50" fxFlex.xs="100"
+            <app-repository *ngFor="let repository of repositories$ | async; index as i"
+                             fxFlex="25" 
+                             fxFlex.sm="50"
+                             fxFlex.md="50"
+                             fxFlex.xs="100"
                 [name]="repository.name"
                 [full_name]="repository.full_name"
                 [fork]="repository.fork"
@@ -19,12 +23,12 @@
             </app-repository>
         </mat-card-content>
         <mat-card-footer>
-            <mat-paginator 
-                [length]="100"
-                [pageSize]="8"
-                [pageSizeOptions]="[8, 12]">
-
-            </mat-paginator>
+            <app-pagination
+                 [has-next]="true"
+                 [has-prev]="false"
+                 [page]="1"
+                 [last-page]="66">
+            </app-pagination>
         </mat-card-footer>
     </mat-card>
 

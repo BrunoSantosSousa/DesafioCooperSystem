@@ -1,0 +1,18 @@
+<div id="container" fxLayout="row" fxLayoutAlign="end center">
+    <button fxFlex="15" 
+            fxFlex.xs="30" 
+            fxFlex.sm="20"
+            [disabled]="!hasPrev"
+            mat-button><mat-icon>keyboard_arrow_left</mat-icon>Voltar</button>
+
+    <span id="label" 
+          fxFlex="20" 
+          fxFlex.xs="40"
+          fxFlex.sm="60">{{ page }} / {{ lastPage }}</span>
+
+    <button fxFlex="15"
+            fxFlex.xs="30"
+            fxFlex.sm="20"
+            [disabled]="!hasNext"
+            mat-button>Avançar<mat-icon>keyboard_arrow_right</mat-icon></button>
+</div>

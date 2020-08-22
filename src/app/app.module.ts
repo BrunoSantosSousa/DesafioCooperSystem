@@ -19,6 +19,7 @@ import { RepositoryComponent } from './components/repository/repository.componen
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './effects';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { Effects } from './effects';
     HomeComponent,
     SearchComponent,
     ToolbarComponent,
-    RepositoryComponent
+    RepositoryComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
