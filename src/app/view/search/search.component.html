@@ -7,10 +7,10 @@
         </mat-card-header>
         <mat-card-content fxLayout="row wrap">
             <app-repository *ngFor="let repository of repositories$ | async; index as i"
-                             fxFlex="25" 
-                             fxFlex.sm="50"
-                             fxFlex.md="50"
-                             fxFlex.xs="100"
+                            fxFlex="25" 
+                            fxFlex.sm="50"
+                            fxFlex.md="50"
+                            fxFlex.xs="100"
                 [name]="repository.name"
                 [full_name]="repository.full_name"
                 [fork]="repository.fork"
@@ -21,15 +21,17 @@
                 [created_at]="repository.created_at"
                 [updated_at]="repository.updated_at">
             </app-repository>
+            <div *ngIf="error$ | async as error">{{ error.message }}</div>
         </mat-card-content>
         <mat-card-footer>
-            <app-pagination
-                 [has-next]="true"
-                 [has-prev]="false"
-                 [page]="1"
-                 [last-page]="66">
+            <app-pagination *ngIf="pagination$ | async as pagination"
+                 [has-next]="pagination.hasNext"
+                 [has-prev]="pagination.hasPrev"
+                 [page]="pagination.page"
+                 [last-page]="pagination.lastPage"
+                 (onNext)="loadNextPage()"
+                 (onPrev)="loadPrevPage()">
             </app-pagination>
         </mat-card-footer>
     </mat-card>
-
 </div>

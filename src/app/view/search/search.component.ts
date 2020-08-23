@@ -9,8 +9,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  public user$ = this.store.pipe(select(fromStore.getUser))
-  public repositories$ = this.store.pipe(select(fromStore.getRepositories))
+  
+  public user$ = this.store.pipe(select(fromStore.getUser));
+  public repositories$ = this.store.pipe(select(fromStore.getRepositories));
+  public pagination$ = this.store.pipe(select(fromStore.getPagination));
+  public error$ = this.store.pipe(select(fromStore.getError));
+
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -34,4 +38,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromStore.UserActions.redirect());
   }
 
+  loadNextPage() {
+    this.store.dispatch(fromStore.SearchActions.loadNextPage());
+  }
+
+  loadPrevPage() {
+    this.store.dispatch(fromStore.SearchActions.loadPrevPage());
+  }
 }

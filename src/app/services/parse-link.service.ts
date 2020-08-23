@@ -10,7 +10,7 @@ export class ParseLinkService {
   constructor(private paginationService : PaginationService) { }
 
   parseLinkHeader(header: string) : Page[] {
-    if (header.length === 0) return;
+    if (!header) return [];
 
     const rels = header.split(',');
     let links : Page[] = [];
@@ -28,7 +28,7 @@ export class ParseLinkService {
         paramKeyValue[paramsSplit[0]] = paramsSplit[1];
       }
       links.push({
-        type: this.paginationService.getPaginationType(type),
+        type: this.paginationService.getPageType(type),
         url: url,
         page: paramKeyValue['page'],
         per_page: paramKeyValue['per_page']
