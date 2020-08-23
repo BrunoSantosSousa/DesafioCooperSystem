@@ -9,7 +9,6 @@ export interface SearchState {
     repositories: Repository[];
     pages: Page[];
     error: Error,
-    hasError: boolean,
     pagination: Pagination,
     currentPage: number
 }
@@ -20,7 +19,6 @@ export const initialState : SearchState = {
     error: {
         message: ''
     },
-    hasError: false,
     pagination: {
         hasNext: false,
         hasPrev: false,
@@ -35,7 +33,7 @@ const searchReducer = createReducer(
     on(SearchActions.loadRepositories, (() => initialState)),
     on(SearchActions.setRepositories, (state, { repositories }) => ({...state, repositories})),
     on(SearchActions.setPages, (state, { pages }) => ({ ...state, pages })),
-    on(SearchActions.setError, (state, { error }) => ({...state, hasError: true, error: error})),
+    on(SearchActions.setError, (state, { error }) => ({...state, error: error})),
     on(SearchActions.setPagination, (state, { pagination }) => ({...state, pagination})),
     on(SearchActions.loadNextPage, (state) => ({...state, currentPage: state.currentPage + 1})),
     on(SearchActions.loadPrevPage, (state) => ({...state, currentPage: state.currentPage - 1})),
