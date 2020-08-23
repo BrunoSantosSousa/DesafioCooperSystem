@@ -20,6 +20,7 @@ import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './effects';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { CustomIconChipComponent } from './components/custom-icon-chip/custom-icon-chip.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     SearchComponent,
     ToolbarComponent,
     RepositoryComponent,
-    PaginationComponent
+    PaginationComponent,
+    CustomIconChipComponent
   ],
   imports: [
     BrowserModule,

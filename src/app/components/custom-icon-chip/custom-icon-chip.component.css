@@ -1,0 +1,14 @@
+#container {
+    border: 1.5px solid #AAA;
+    border-radius: 3px;
+}
+
+#left-box { 
+    background-color: #eee;
+    width: 100%;
+    text-align: center;
+}
+
+#right-box {
+    text-align: center;
+}
