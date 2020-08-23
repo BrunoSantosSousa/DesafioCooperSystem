@@ -3,6 +3,7 @@
             fxFlex.xs="30" 
             fxFlex.sm="20"
             [disabled]="!hasPrev"
+            (click)="emitOnPrev()"
             mat-button><mat-icon>keyboard_arrow_left</mat-icon>Voltar</button>
 
     <span id="label" 
@@ -14,5 +15,6 @@
             fxFlex.xs="30"
             fxFlex.sm="20"
             [disabled]="!hasNext"
+            (click)="emitOnNext()"
             mat-button>Avançar<mat-icon>keyboard_arrow_right</mat-icon></button>
 </div>
