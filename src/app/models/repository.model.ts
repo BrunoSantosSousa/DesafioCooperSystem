@@ -1,5 +1,6 @@
 export interface Repository {
     name : string;
+    description: string;
     full_name : string;
     fork : boolean;
     html_url : string;
