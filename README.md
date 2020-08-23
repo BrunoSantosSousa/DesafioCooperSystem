@@ -1,11 +1,11 @@
 # Desafio CooperSystem
 Candidato: Bruno dos Santos Sousa
 
-**Modulos utilizados:**
+**Modulos utilizados:** \
 @ngrx/store \
 @ngrx/effect \
 @ngrx/store-devtools \
-@Angular FlexLayout \
+@Angular FlexLayout
 
 ## Instalação
 
