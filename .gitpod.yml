@@ -1,6 +1,0 @@
-ports:
-  - port: 4200
-tasks:
-  - before: npm install -g @angular/cli
-    init: npm install
-    command: ng serve
