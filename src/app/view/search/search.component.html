@@ -11,15 +11,16 @@
                             fxFlex.sm="50"
                             fxFlex.md="50"
                             fxFlex.xs="100"
-                [name]="repository.name"
-                [full_name]="repository.full_name"
-                [fork]="repository.fork"
-                [html_url]="repository.html_url"
-                [stargazers_count]="repository.stargazers_count"
-                [watchers]="repository.watchers"
-                [forks]="repository.forks"
-                [created_at]="repository.created_at"
-                [updated_at]="repository.updated_at">
+                            [name]="repository.name"
+                            [full_name]="repository.full_name"
+                            [fork]="repository.fork"
+                            [html_url]="repository.html_url"
+                            [stargazers_count]="repository.stargazers_count"
+                            [watchers]="repository.watchers"
+                            [forks]="repository.forks"
+                            [created_at]="repository.created_at"
+                            [updated_at]="repository.updated_at"
+                            (click)="openRepositoryDialog(repository)">
             </app-repository>
             <div *ngIf="error$ | async as error">{{ error.message }}</div>
         </mat-card-content>

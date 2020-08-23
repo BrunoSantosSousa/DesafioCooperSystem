@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as fromStore from '../../store';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { RepositoryDialogComponent } from '../../components/repository-dialog/repository-dialog.component';
 
 @Component({
   selector: 'app-search',
@@ -19,7 +21,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<fromStore.State>,
+    private dialog: MatDialog
   ) { }
+
+  openRepositoryDialog(repository) {
+    const dialogRef = this.dialog.open(RepositoryDialogComponent, {
+      data: repository
+    });
+  }
 
   ngOnInit(): void {
     this.subscription.add(this.user$.subscribe((user) => {

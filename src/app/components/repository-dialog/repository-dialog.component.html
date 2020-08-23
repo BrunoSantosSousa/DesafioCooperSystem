@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Informações do Repositório</h2>
+
+<mat-dialog-content class="mat-typography">
+    <p><strong>Projeto: </strong>{{data.full_name}}</p>
+    <p><strong>Descrição: </strong>{{data.description ? data.description : 'Projeto sem descrição'}}</p>
+    <p><strong>URL: </strong><a target="_blank" [href]="data.html_url">{{data.html_url}}</a></p>
+    <p><strong>É um fork? </strong> {{ data.fork ? 'sim' : 'não'}}</p>
+    <p><strong>Seguidores: </strong>{{ data.watchers }}</p>
+    <p><strong>Forks: </strong>{{data.forks}}</p>
+    <p><strong>Criado em: </strong>{{data.created_at | date:'dd/MM/yyyy' }}</p>
+    <p><strong>Atualizado em: </strong>{{data.updated_at | date:'dd/MM/yyyy'}}</p>
+</mat-dialog-content>

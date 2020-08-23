@@ -21,6 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { Effects } from './effects';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { CustomIconChipComponent } from './components/custom-icon-chip/custom-icon-chip.component';
+import { RepositoryDialogComponent } from './components/repository-dialog/repository-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CustomIconChipComponent } from './components/custom-icon-chip/custom-ic
     ToolbarComponent,
     RepositoryComponent,
     PaginationComponent,
-    CustomIconChipComponent
+    CustomIconChipComponent,
+    RepositoryDialogComponent
   ],
   imports: [
     BrowserModule,

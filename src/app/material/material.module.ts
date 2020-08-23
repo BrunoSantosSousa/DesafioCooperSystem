@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     MatPaginatorModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule
   ],
   exports: [
     MatFormFieldModule,
@@ -27,7 +29,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     MatPaginatorModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
